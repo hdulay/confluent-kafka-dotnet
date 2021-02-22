@@ -60,13 +60,13 @@ namespace Confluent.Kafka.Examples.ProducerExample
 
             var config = new ProducerConfig
             {
-                BootstrapServers = "pkc-lgwgm.eastus2.azure.confluent.cloud:9092",
+                BootstrapServers = "",
                 SaslMechanism = SaslMechanism.Plain,
                 SecurityProtocol = SecurityProtocol.SaslSsl,
                 // Note: If your root CA certificates are in an unusual location you
                 // may need to specify this using the SslCaLocation property.
-                SaslUsername = "7NVPUMYCLQGYENEP",
-                SaslPassword = "BBvxZzi9+sFZXX/j5tgbET5ujGoCecYGthiVv+u68aP9/CTmzyixU4ZmLZUFyZmW"
+                SaslUsername = "",
+                SaslPassword = ""
             };
 
             using (var producer = new ProducerBuilder<string, string>(config).Build())
