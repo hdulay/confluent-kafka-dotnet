@@ -29,7 +29,7 @@ ccloud kafka topic consume --api-key key --api-secret secret your-topic
 
 ## sample output
 
-output is format
+output format
 
 ```text
 RANDOM_TEXT message_count elapsed[time]
