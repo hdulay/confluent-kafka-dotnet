@@ -49,24 +49,23 @@ namespace Confluent.Kafka.Examples.ProducerExample
 
         public static Task Main(string[] args)
         {
-            // if (args.Length != 2)
-            // {
-            //     Console.WriteLine("Usage: .. brokerList topicName");
-            //     return;
-            // }
+            if (args.Length != 4)
+            {
+                Console.WriteLine("Usage: .. brokerList key secret topicName");
+                return Task.CompletedTask;
+            }
 
-            // string brokerList = "pkc-lgwgm.eastus2.azure.confluent.cloud:9092";
-            string topicName = "dotnet-test-topic";
+            string topicName = args[3];
 
             var config = new ProducerConfig
             {
-                BootstrapServers = "",
+                BootstrapServers = args[0],
                 SaslMechanism = SaslMechanism.Plain,
                 SecurityProtocol = SecurityProtocol.SaslSsl,
                 // Note: If your root CA certificates are in an unusual location you
                 // may need to specify this using the SslCaLocation property.
-                SaslUsername = "",
-                SaslPassword = ""
+                SaslUsername = args[1],
+                SaslPassword = args[2]
             };
 
             using (var producer = new ProducerBuilder<string, string>(config).Build())
