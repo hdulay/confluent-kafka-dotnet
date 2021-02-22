@@ -33,6 +33,7 @@ output is format
 
 ```text
 RANDOM_TEXT message_count elapsed[time]
+```
 
 ```text
 ...
