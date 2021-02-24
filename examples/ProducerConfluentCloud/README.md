@@ -19,12 +19,38 @@ dotnet run bootstrap_servers key secret your-topic
 
 ## Create a script to read the data from Confluent Cloud
 
+Using ccloud cli
+
 ```bash
 #!/bin/bash
 ccloud login
 ccloud environment use env-XXXXX
 ccloud kafka cluster use lck-XXXXXX
 ccloud kafka topic consume --api-key key --api-secret secret your-topic
+```
+
+## Read script using kafka console consumer
+
+Create a file called config.properties
+
+```conf
+bootstrap.servers=bootstrap-server:9092
+ssl.endpoint.identification.algorithm=https
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="{{KEY}}" password="{{SECREET}}";
+```
+
+Create a bash script
+
+```bash
+#!/bin/bash
+
+BS=bootsrap-srver.io:9092
+TOPIC=test-topic
+
+kafka-console-consumer --bootstrap-server ${BS} --consumer.config config.properties --topic ${TOPIC} --from-beginning 
+
 ```
 
 ## sample output
