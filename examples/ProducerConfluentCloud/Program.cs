@@ -66,7 +66,8 @@ namespace Confluent.Kafka.Examples.ProducerExample
                 // Note: If your root CA certificates are in an unusual location you
                 // may need to specify this using the SslCaLocation property.
                 SaslUsername = args[1],
-                SaslPassword = args[2]
+                SaslPassword = args[2],
+                SocketTimeoutMs = 30000
             };
 
             using (var producer = new ProducerBuilder<string, string>(config).Build())
@@ -96,7 +97,7 @@ namespace Confluent.Kafka.Examples.ProducerExample
 
                         count++;
 
-                        Thread.Sleep(30);
+                        Thread.Sleep(30000);
                     }
 
                     s.Stop();
