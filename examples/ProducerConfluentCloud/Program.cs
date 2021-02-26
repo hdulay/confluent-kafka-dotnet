@@ -23,6 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 
 
 namespace Confluent.Kafka.Examples.ProducerExample
@@ -94,6 +95,8 @@ namespace Confluent.Kafka.Examples.ProducerExample
                                 : $"produced to: {task.Result.TopicPartitionOffset}");
 
                         count++;
+
+                        Thread.Sleep(30);
                     }
 
                     s.Stop();

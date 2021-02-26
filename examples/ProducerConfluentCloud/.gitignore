@@ -1,2 +1,3 @@
 *.sh
-config-bd.properties
+*.properties
+
