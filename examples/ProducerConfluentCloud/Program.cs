@@ -67,7 +67,7 @@ namespace Confluent.Kafka.Examples.ProducerExample
                 // may need to specify this using the SslCaLocation property.
                 SaslUsername = args[1],
                 SaslPassword = args[2],
-                SocketTimeoutMs = 30000
+                SocketTimeoutMs = 40000
             };
 
             using (var producer = new ProducerBuilder<string, string>(config).Build())
